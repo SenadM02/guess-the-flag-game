@@ -78,3 +78,11 @@ input[type="submit"] {
     background-color: field;
 }
 
+@media (max-width: 600px) {
+    input[type="text"] {
+        background-color: rgba(41, 40, 38, 0.743);
+    }
+    input[type="submit"] {
+        background-color: rgba(41, 40, 38, 0.743);
+    }
+}

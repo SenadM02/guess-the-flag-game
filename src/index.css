@@ -53,6 +53,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+@media (max-width: 600px){
+  body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../public/background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
