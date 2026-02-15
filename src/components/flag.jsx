@@ -39,9 +39,11 @@ function Flag(){
 
         if(userGuess === answer) {
             setScore(score + 1);
-            setFeedback("Correct asnwer");
+            setFeedback("Correct answer");
         }else{
-            setFeedback("Wrong answer, the flag was " + answer);
+            setFeedback(<>
+                Wrong answer, the flag was <strong>{countries[index].name.common}</strong>
+            </>);
         }
         setIndex(prev => prev + 1);
 

@@ -10,6 +10,13 @@ img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(0px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 50px;
 }
 
 .form {
@@ -19,17 +26,44 @@ img {
 }
 
 input[type="text"] {
+    background-color: rgba(100, 64, 17, 0.743);
     width: 250px;
-    height: 30px;
+    height: 35px;
+    font-size: 20px;
     padding-left: 5px;
     margin: 0;
 }
 
+input[type="text"]::placeholder {
+    color: white;
+}
+
 input[type="submit"] {
+    background-color: rgba(53, 50, 11, 0.655);
     width: 230px;
-    height: 25px;
+    height: 30px;
+    font-size: 20px;
     padding: 0;
     margin-top: 5px;
+    cursor: pointer;
+}
+
+.feedback {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.feedback p {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.feedback p strong {
+    margin-left: 5px;
+    font-weight: 700;
 }
 
 .hint {
