@@ -59,10 +59,14 @@ input[type="submit"] {
     margin: 0;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 5px;
 }
 
 .feedback p strong {
-    margin-left: 5px;
     font-weight: 700;
 }
 
