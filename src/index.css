@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  overflow: hidden;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -26,6 +30,7 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../public/background.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   margin: 0;
   display: flex;
   min-width: 320px;
@@ -58,6 +63,7 @@ button:focus-visible {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../public/background2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
