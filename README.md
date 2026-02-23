@@ -2,6 +2,10 @@
 
 Simple game where you can guess the flags of the countries.
 
+# Game is live at:
+
+https://senadm02.github.io/guess-the-flag-game/
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
