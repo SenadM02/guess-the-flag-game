@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import "./flag.css";
 
 function Flag(){
@@ -8,6 +8,8 @@ function Flag(){
     const [feedback, setFeedback] = useState("");
     const [inputValue, setInputValue] = useState("");
     const [activeSuggestion, setActiveSuggestion] = useState(-1);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const autocompleteRef = useRef(null);
 
     function shuffleCountries(array) {
         const shuffled = [...array];
@@ -27,9 +29,21 @@ function Flag(){
             } catch(err){
                 console.error("Error fetching countries:", err);
             }
-            
         };
         getCountries();
+    }, []);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (autocompleteRef.current && !autocompleteRef.current.contains(event.target)) {
+                setShowSuggestions(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
     }, []);
 
     const suggestions = useMemo(() => {
@@ -47,11 +61,14 @@ function Flag(){
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
         setActiveSuggestion(-1);
+        setShowSuggestions(true);
         if (feedback) setFeedback("");
     };
 
     const selectSuggestion = (name) => {
         setInputValue(name);
+        setActiveSuggestion(-1);
+        setShowSuggestions(false);
     };
 
     const handleKeyDown = (e) => {
@@ -70,6 +87,7 @@ function Flag(){
                 e.preventDefault(); 
                 setInputValue(suggestions[activeSuggestion].name.common);
                 setActiveSuggestion(-1);
+                setShowSuggestions(false);
             }
         }
     };
@@ -91,6 +109,7 @@ function Flag(){
         setIndex(prev => prev + 1);
         setInputValue("");
         setActiveSuggestion(-1);
+        setShowSuggestions(false);
     }
 
     return(
@@ -99,7 +118,7 @@ function Flag(){
                 <h1>Guess the Flag!</h1>
                 <img src={countries[index].flags.png}/>
                 <form className="form" onSubmit={onSubmit}>
-                    <div className="textInput">
+                    <div className="textInput" ref={autocompleteRef}>
                         <input
                             type="text" 
                             placeholder="Guess the flag" 
@@ -107,10 +126,11 @@ function Flag(){
                             value={inputValue}
                             onChange={handleInputChange}
                             onKeyDown={handleKeyDown}
+                            onFocus={() => setShowSuggestions(true)}
                             required
                         />
 
-                        {suggestions.length > 0 && (
+                        {showSuggestions && suggestions.length > 0 && (
                             <ul className="suggestions-list">
                                 {suggestions.map((s, i) => (
                                     <li key={i} onClick={() => selectSuggestion(s.name.common)}
