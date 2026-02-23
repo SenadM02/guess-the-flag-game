@@ -5,6 +5,10 @@ img {
     margin-bottom: 15px;
 }
 
+h1 {
+    font-size: 40px;
+}
+
 .game {
     display: flex;
     justify-content: center;
@@ -23,6 +27,41 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.textInput {
+    position: relative;
+    margin: 0 auto;
+}
+
+.suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(100, 64, 17, 0.743);
+    border: 1px solid #ccc;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+    text-align: left;
+}
+
+.suggestions-list li {
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.suggestions-list li:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+.suggestions-list li.suggestion-active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 900;
 }
 
 input[type="text"] {
@@ -84,5 +123,12 @@ input[type="submit"] {
     }
     input[type="submit"] {
         background-color: rgba(41, 40, 38, 0.743);
+    }
+    h1 {
+        font-size: 30px;
+    }
+    img {
+        width: 284px;
+        height: 170px;
     }
 }
